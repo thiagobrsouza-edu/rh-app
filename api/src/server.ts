@@ -3,6 +3,7 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import "reflect-metadata";
 import { connectToDatabase } from './config/database';
+import { routes } from './routes';
 
 export const app = express();
 
@@ -13,6 +14,8 @@ app.use(express.json());
 app.use(logger('dev'));
 
 connectToDatabase();
+
+app.use(routes);
 
 const port = 3001;
 const server = app.listen(port, () => console.log(`Application running on port ${port}`));
