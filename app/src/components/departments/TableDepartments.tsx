@@ -10,7 +10,6 @@ export const TableDepartments: React.FC = () => {
 
   useEffect(() => {
     service.list().then((response: AxiosResponse) => {
-      console.log(response.data);
       setDepartments(response.data);
     });
   }, []);

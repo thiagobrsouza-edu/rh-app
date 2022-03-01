@@ -14,9 +14,7 @@ export const Layout: React.FC<LayoutProps> = ({title, children}) => {
         <div className="card shadow-sm">
           <div className="card-body">
             <h4 className="card-title text-center">{title}</h4>
-            <div className="text-center">
-              {children}
-            </div>
+            {children}
           </div>
         </div>
       </aside>
