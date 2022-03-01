@@ -56,11 +56,20 @@ export const useDepartment = () => {
     });
   }
 
+  const deleteOne = async (id: any) => {
+    await http.delete(`/departments/${id}`).then((response: AxiosResponse) => {
+      toast.success('Removido com sucesso!');
+    }).catch((error: any) => {
+      toast.error(error.response.data);
+    });
+  }
+
   return {
     save,
     list,
     getOne,
-    update
+    update,
+    deleteOne
   }
   
 }
