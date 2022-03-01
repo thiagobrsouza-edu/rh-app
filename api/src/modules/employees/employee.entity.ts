@@ -2,7 +2,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Department } from "../departments/department.entity";
 import { Role } from "../roles/role.entity";
 
-@Entity('employess')
+@Entity('employees')
 export class Employee {
 
   @PrimaryGeneratedColumn()
@@ -23,7 +23,7 @@ export class Employee {
   @Column({nullable: true})
   resignation: string;
 
-  @Column({nullable: false})
+  @Column({nullable: false, type: 'decimal', precision: 15, scale: 2})
   salary: number;
 
   @ManyToOne(() => Role, role => role.employees)
