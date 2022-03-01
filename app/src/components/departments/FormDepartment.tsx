@@ -1,11 +1,14 @@
 import Link from "next/link"
 import { ChangeEvent, useState } from "react"
+import { ToastContainer } from "react-toastify"
+import { useDepartment } from "../../api/departments/DepartmentService"
 import { IDepartment } from "../../api/departments/IDepartment"
 import { InputForm } from "../common/InputForm"
 import { TextAreaForm } from "../common/TextAreaForm"
 
 export const FormDepartment: React.FC = () => {
 
+  const service = useDepartment();
   const [department, setDepartment] = useState<IDepartment>({
     description: '', notes: ''
   });
@@ -17,7 +20,8 @@ export const FormDepartment: React.FC = () => {
 
   const submit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(department);
+    service.save(department);
+    setDepartment({description: '', notes: ''});
   }
 
   return (
@@ -36,6 +40,7 @@ export const FormDepartment: React.FC = () => {
           <button className="ms-1 mb-2 col-sm-4 col-sm-4 col-xs-12 btn btn-info">Ir para departamentos</button>
         </Link>
       </div>
+      <ToastContainer />
     </form>
   )
 }
