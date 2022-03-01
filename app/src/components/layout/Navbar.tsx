@@ -19,6 +19,11 @@ export const Navbar: React.FC = () => {
               </Link>
             </li>
             <li className="nav-item ms-4">
+              <Link href={'/roles'}>
+                <a className="nav-link">Cargos e funções</a>
+              </Link>
+            </li>
+            <li className="nav-item ms-4">
               <Link href={'/employees'}>
                 <a className="nav-link">Funcionários</a>
               </Link>
