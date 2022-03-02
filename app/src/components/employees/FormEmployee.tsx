@@ -20,7 +20,7 @@ export const FormEmployee: React.FC = () => {
   const [roles, setRoles] = useState<IRole[]>([]);
   const [departments, setDepartments] = useState<IDepartment[]>([]);
   const [employee, setEmployee] = useState<IEmployee>({
-    name: '', cpf: '', birthDate: '', admission: '', resignation: '', salary: 0, role: {}, department: {}
+    name: '', cpf: '', birthDate: '', admission: '', resignation: '', salary: '', role: {}, department: {}
   });
   const router = useRouter();
   const { id: queryId } = router.query;
@@ -53,10 +53,10 @@ export const FormEmployee: React.FC = () => {
   const submit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (employee.id) {
-      service.update(employee);
+      service.update({...employee});
     } else {
-      service.save(employee);
-      setEmployee({ name: '', cpf: '', birthDate: '', admission: '', resignation: '', salary: 0, role: {}, department: {} });
+      service.save({...employee});
+      setEmployee({ name: '', cpf: '', birthDate: '', admission: '', resignation: '', salary: '', role: {}, department: {} });
     }
   }
 
@@ -94,8 +94,8 @@ export const FormEmployee: React.FC = () => {
             <option key={department.id} value={department.id}>{department.description}</option>
           ))}
         </SelectForm>
-        <InputForm label="Salário R$" xxl="3" xl="3" md="3" sm="12" xs="12"
-        id="salary" value={employee.salary} onChange={handleInputChange} />
+        <InputForm label="Salário R$" xxl="3" xl="3" md="3" sm="12" xs="12" id="salary" 
+        value={employee.salary} onChange={handleInputChange} />
       </div>
       
       <div className="mt-4 row justify-content-center">

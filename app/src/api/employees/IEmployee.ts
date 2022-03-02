@@ -9,7 +9,7 @@ export interface IEmployee {
   birthDate?: string;
   admission?: string;
   resignation?: string;
-  salary?: number;
+  salary?: any;
   role?: IRole;
   department?: IDepartment;
   

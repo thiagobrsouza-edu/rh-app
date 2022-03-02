@@ -51,6 +51,11 @@ export const TableEmployees: React.FC = () => {
 
   const employeesFiltered = employees.filter(filterEmployees);
 
+  const formatSalary = (value: any) => {
+    const salary = new Number(value);
+    return salary.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+  }
+
   return (
     <>
       <div className="row justify-content-center">
@@ -84,7 +89,7 @@ export const TableEmployees: React.FC = () => {
                   <td>{employee.name}</td>
                   <td>{employee.cpf}</td>
                   <td>{employee.role?.description}</td>
-                  <td>{employee.salary}</td>
+                  <td>{formatSalary(employee.salary)}</td>
                   <td>
                     <button className="ms-1 btn btn-primary" onClick={e => updateSelect(employee)}>
                       <i className="bi bi-pencil-square"></i>
