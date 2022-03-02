@@ -9,7 +9,7 @@ import { useEmployee } from "../../api/employees/EmployeeService"
 import { IEmployee } from "../../api/employees/IEmployee"
 import { IRole } from "../../api/roles/IRole"
 import { useRole } from "../../api/roles/RoleService"
-import { converterToDecimal, formatReal } from "../../utils/money"
+import { converterToDecimal, currencyMask } from "../../utils/money"
 import { InputForm } from "../common/InputForm"
 import { SelectForm } from "../common/SelectForm"
 
@@ -95,8 +95,8 @@ export const FormEmployee: React.FC = () => {
             <option key={department.id} value={department.id}>{department.description}</option>
           ))}
         </SelectForm>
-        <InputForm label="Salário R$" xxl="3" xl="3" md="3" sm="12" xs="12" id="salary" 
-        value={formatReal(employee.salary)} onChange={handleInputChange} />
+        <InputForm label="Salário R$" xxl="3" xl="3" md="3" sm="12" xs="12" id="salary"
+        value={currencyMask(employee.salary)} onChange={handleInputChange} />
       </div>
       
       <div className="mt-4 row justify-content-center">
@@ -104,7 +104,7 @@ export const FormEmployee: React.FC = () => {
           {employee.id ? "Atualizar" : "Salvar"}
         </button>
         <Link href={'/employees'}>
-          <button className="ms-1 mb-2 col-sm-4 col-sm-4 col-xs-12 btn btn-info">Ir para cargos</button>
+          <button className="ms-1 mb-2 col-sm-4 col-sm-4 col-xs-12 btn btn-info">Ir para Funcionários</button>
         </Link>
       </div>
       

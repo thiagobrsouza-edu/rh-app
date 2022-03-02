@@ -41,7 +41,7 @@ export const TableEmployees: React.FC = () => {
     return (
       employee.name?.toString().toLowerCase().includes(lowerFilter) || 
       employee.cpf?.toString().toLowerCase().includes(lowerFilter) || 
-      employee.role?.toString().toLowerCase().includes(lowerFilter)
+      employee.role?.description?.toString().toLowerCase().includes(lowerFilter)
     );
   }
 
@@ -65,7 +65,7 @@ export const TableEmployees: React.FC = () => {
           </button>
         </Link>
         <div className="mt-2 col-md-6 col-sm-8 col-xs-12">
-          <input type="text" className="form-control" placeholder="Pesquise por descrição"
+          <input type="text" className="form-control" placeholder="Pesquise por nome, CPF ou cargo"
             value={filter} onChange={onFilterChange} />
         </div>
       </div>
