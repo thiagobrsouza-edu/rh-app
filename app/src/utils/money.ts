@@ -1,4 +1,4 @@
-export const converterEmBigDecimal = (value: any) : number => {
+export const converterToDecimal = (value: any) : number => {
   if(!value){
       return 0;
   }
@@ -8,7 +8,7 @@ export const converterEmBigDecimal = (value: any) : number => {
 export const formatReal = ( valor: any ) => {
   const v = ((valor.replace(/\D/g, '') / 100).toFixed(2) + '').split('.');
 
-  const m = v[0].split('').reverse().join('').match(/.{1,3}/g);
+  const m: any = v[0].split('').reverse().join('').match(/.{1,3}/g);
 
   for (let i = 0; i < m.length; i++)
       m[i] = m[i].split('').reverse().join('') + '.';

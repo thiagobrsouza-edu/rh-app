@@ -9,6 +9,7 @@ import { useEmployee } from "../../api/employees/EmployeeService"
 import { IEmployee } from "../../api/employees/IEmployee"
 import { IRole } from "../../api/roles/IRole"
 import { useRole } from "../../api/roles/RoleService"
+import { converterToDecimal, formatReal } from "../../utils/money"
 import { InputForm } from "../common/InputForm"
 import { SelectForm } from "../common/SelectForm"
 
@@ -53,9 +54,9 @@ export const FormEmployee: React.FC = () => {
   const submit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (employee.id) {
-      service.update({...employee});
+      service.update({...employee, salary: converterToDecimal(employee.salary)});
     } else {
-      service.save({...employee});
+      service.save({...employee, salary: converterToDecimal(employee.salary)});
       setEmployee({ name: '', cpf: '', birthDate: '', admission: '', resignation: '', salary: '', role: {}, department: {} });
     }
   }
@@ -95,7 +96,7 @@ export const FormEmployee: React.FC = () => {
           ))}
         </SelectForm>
         <InputForm label="Salário R$" xxl="3" xl="3" md="3" sm="12" xs="12" id="salary" 
-        value={employee.salary} onChange={handleInputChange} />
+        value={formatReal(employee.salary)} onChange={handleInputChange} />
       </div>
       
       <div className="mt-4 row justify-content-center">
